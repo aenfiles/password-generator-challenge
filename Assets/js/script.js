@@ -1,9 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
 function generatePassword() {
-  var userInput = window.prompt("How many characters would you like in your password?")
-  var lengthPassword = parseInt(userInput)
+
+  var lengthPassword = parseInt(window.prompt("How many characters would you like in your password?"))
 
 // Password Length
   if (isNaN(lengthPassword)) {
@@ -11,7 +12,7 @@ function generatePassword() {
   } 
   if (lengthPassword < 8 || lengthPassword > 128) {
     window.alert("Password must be between 8 - 128 characters")
-    return
+    return 
   }
 
 // Password criteria prompts
@@ -42,11 +43,19 @@ function generatePassword() {
     endCriteria.push(uppercaseList)
   }
 
-  var generatePassword = ""
+  console.log(endCriteria)
 
-  for(var i = 0; i < lengthPassword; i++) {
-    
+  var generatedPassword = "";
+
+  for (var i = 0; i < lengthPassword; i++) {
+    var randomNumberOne = Math.floor(Math.random() * endCriteria.length)
+    var randomList = endCriteria[randomNumberOne]
+    var randomNumberTwo = Math.floor(Math.random() * randomList.length)
+    var randomCharacter = randomList[randomNumberTwo]
+    generatedPassword += randomCharacter
+
   }
+  return generatedPassword;
 
 }
 
